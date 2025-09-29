@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación Especial</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f3f0; padding: 20px; max-width: 600px; margin: auto; }
+    .sobre { background: white; border: 3px solid #c8a165; border-radius: 10px; padding: 20px; cursor: pointer; text-align: center; }
+    .contenido { display: none; margin-top: 20px; background: white; padding: 20px; border-radius: 10px; }
+    h1 { color: #c8a165; }
+    .nombre-invitado { font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+    button { background-color: #c8a165; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; }
+    button:hover { background-color: #b59247; }
+  </style>
+</head>
+<body>
+  <div class="sobre" onclick="abrirSobre()">
+    <h2>DALE CLICK</h2>
+    <p>Para abrir el sobre y ver tu invitación</p>
+  </div>
+  <div class="contenido" id="contenido">
+    <p class="nombre-invitado"></p>
+    <h1>Boda de Carla & Javi</h1>
+    <p>12 de diciembre de 2025</p>
+    <p>Iglesia San Pedro - 15:00 hrs</p>
+    <p>Recepción: Salón Luna - 18:00 hrs</p>
+    <h3>Confirma tu asistencia</h3>
+    <p><a href="https://forms.gle/tuform" target="_blank">Haz clic aquí para confirmar tu asistencia</a></p>
+  </div>
+  <script>
+    function abrirSobre() {
+      document.getElementById('contenido').style.display = 'block';
+      document.querySelector('.sobre').style.display = 'none';
+      const params = new URLSearchParams(window.location.search);
+      const nombre = params.get('nombre');
+      if(nombre) {
+        document.querySelector('.nombre-invitado').textContent = 'Invitación personalizada para: ' + decodeURIComponent(nombre);
+      }
+    }
+  </script>
+</body>
+</html>
